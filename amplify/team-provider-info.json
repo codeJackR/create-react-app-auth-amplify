@@ -1,0 +1,20 @@
+{
+  "devb": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-authcra-devb-115040-authRole",
+      "UnauthRoleArn": "arn:aws:iam::284574221677:role/amplify-authcra-devb-115040-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::284574221677:role/amplify-authcra-devb-115040-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-authcra-devb-115040-deployment",
+      "UnauthRoleName": "amplify-authcra-devb-115040-unauthRole",
+      "StackName": "amplify-authcra-devb-115040",
+      "StackId": "arn:aws:cloudformation:us-west-1:284574221677:stack/amplify-authcra-devb-115040/875ee100-fb8f-11ec-a0a5-062c16d67fe3",
+      "AmplifyAppId": "d8oozj3krt3ok"
+    },
+    "categories": {
+      "auth": {
+        "exonetz": {}
+      }
+    }
+  }
+}
