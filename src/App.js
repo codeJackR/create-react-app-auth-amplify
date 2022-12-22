@@ -5,11 +5,9 @@ import './App.css';
 
 function App() {
 
-
-
   const navbarOverrides = {
     "image": {
-        src: "https://www.bootdey.com/app/webroot/img/Content/avatar/avatar1.jpg"
+        src: "https://cdn.vectorstock.com/i/1000x1000/39/94/varicella-zoster-virus-glyph-icon-vector-33723994.webp"
     }
   }
 

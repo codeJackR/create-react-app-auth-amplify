@@ -5,7 +5,7 @@
  **************************************************************************/
 
 /* eslint-disable */
-import React from "react";
+import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Icon, Image, Text } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
@@ -63,17 +63,17 @@ export default function NavBar(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Influnet"
-          {...getOverrideProps(overrides, "Influnet")}
+          children="InfluNet"
+          {...getOverrideProps(overrides, "InfluNet")}
         ></Text>
       </Flex>
       <Flex
         gap="32px"
-        width="1261px"
+        width="1259px"
         justifyContent="flex-end"
         alignItems="center"
         grow="1"
-        basis="1261px"
+        basis="1259px"
         height="45px"
         position="relative"
         padding="0px 0px 0px 0px"

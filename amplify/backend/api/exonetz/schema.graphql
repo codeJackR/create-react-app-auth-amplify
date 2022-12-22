@@ -1,8 +1,15 @@
-type Influencer @model @auth(rules: [{allow: public}]) {
+type CreatorDetails @model @auth(rules: [{allow: public}]) {
   id: ID!
-  Name: String
-  email_id: String
+  creator_id: ID!
   username: String
-  description: String
+  email_id: AWSEmail!
+  first_name: String
+  last_name: String
+  last_updated_at: AWSDateTime
 }
- 
+
+type Creator @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  email_id: AWSEmail!
+}

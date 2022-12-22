@@ -4,15 +4,16 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import React from "react";
+import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { ProfileCardProps } from "./ProfileCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
 export declare type BrowseInfluencersProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
     items?: any[];
-    overrideItems?: ({ item: any, index: number }: {
+    overrideItems?: (collectionItem: {
         item: any;
-        index: any;
-    }) => Record<string, string>;
+        index: number;
+    }) => ProfileCardProps;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
