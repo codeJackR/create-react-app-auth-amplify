@@ -1,12 +1,15 @@
 {
   "auth": {
-    "cognitocf0c6096": {
+    "exonetz": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
+      "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "signupAttributes": [
           "EMAIL"
         ],

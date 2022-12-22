@@ -1,9 +1,22 @@
-type Influencer @aws_iam @aws_api_key {
+type CreatorDetails @aws_iam @aws_api_key {
   id: ID!
-  Name: String
-  email_id: String
+  creator_id: ID!
   username: String
-  description: String
+  email_id: AWSEmail!
+  first_name: String
+  last_name: String
+  last_updated_at: AWSDateTime
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Creator @aws_iam @aws_api_key {
+  id: ID!
+  username: String!
+  email_id: AWSEmail!
   _version: Int!
   _deleted: Boolean
   _lastChangedAt: AWSTimestamp!
@@ -16,8 +29,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelInfluencerConnection @aws_api_key @aws_iam {
-  items: [Influencer]!
+type ModelCreatorDetailsConnection @aws_api_key @aws_iam {
+  items: [CreatorDetails]!
   nextToken: String
   startedAt: AWSTimestamp
 }
@@ -95,15 +108,17 @@ input ModelSizeInput {
   between: [Int]
 }
 
-input ModelInfluencerFilterInput {
+input ModelCreatorDetailsFilterInput {
   id: ModelIDInput
-  Name: ModelStringInput
-  email_id: ModelStringInput
+  creator_id: ModelIDInput
   username: ModelStringInput
-  description: ModelStringInput
-  and: [ModelInfluencerFilterInput]
-  or: [ModelInfluencerFilterInput]
-  not: ModelInfluencerFilterInput
+  email_id: ModelStringInput
+  first_name: ModelStringInput
+  last_name: ModelStringInput
+  last_updated_at: ModelStringInput
+  and: [ModelCreatorDetailsFilterInput]
+  or: [ModelCreatorDetailsFilterInput]
+  not: ModelCreatorDetailsFilterInput
 }
 
 enum ModelAttributeTypes {
@@ -120,52 +135,109 @@ enum ModelAttributeTypes {
 }
 
 type Query {
-  getInfluencer(id: ID!): Influencer @aws_api_key @aws_iam
-  listInfluencers(filter: ModelInfluencerFilterInput, limit: Int, nextToken: String): ModelInfluencerConnection @aws_api_key @aws_iam
-  syncInfluencers(filter: ModelInfluencerFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelInfluencerConnection @aws_api_key @aws_iam
+  getCreatorDetails(id: ID!): CreatorDetails @aws_api_key @aws_iam
+  listCreatorDetailss(filter: ModelCreatorDetailsFilterInput, limit: Int, nextToken: String): ModelCreatorDetailsConnection @aws_api_key @aws_iam
+  syncCreatorDetails(filter: ModelCreatorDetailsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelCreatorDetailsConnection @aws_api_key @aws_iam
+  getCreator(id: ID!): Creator @aws_api_key @aws_iam
+  listCreators(filter: ModelCreatorFilterInput, limit: Int, nextToken: String): ModelCreatorConnection @aws_api_key @aws_iam
+  syncCreators(filter: ModelCreatorFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelCreatorConnection @aws_api_key @aws_iam
 }
 
-input CreateInfluencerInput {
+input CreateCreatorDetailsInput {
   id: ID
-  Name: String
-  email_id: String
+  creator_id: ID!
   username: String
-  description: String
+  email_id: AWSEmail!
+  first_name: String
+  last_name: String
+  last_updated_at: AWSDateTime
   _version: Int
 }
 
-input UpdateInfluencerInput {
+input UpdateCreatorDetailsInput {
   id: ID!
-  Name: String
-  email_id: String
+  creator_id: ID
   username: String
-  description: String
+  email_id: AWSEmail
+  first_name: String
+  last_name: String
+  last_updated_at: AWSDateTime
   _version: Int
 }
 
-input DeleteInfluencerInput {
+input DeleteCreatorDetailsInput {
   id: ID!
   _version: Int
 }
 
 type Mutation {
-  createInfluencer(input: CreateInfluencerInput!, condition: ModelInfluencerConditionInput): Influencer @aws_api_key @aws_iam
-  updateInfluencer(input: UpdateInfluencerInput!, condition: ModelInfluencerConditionInput): Influencer @aws_api_key @aws_iam
-  deleteInfluencer(input: DeleteInfluencerInput!, condition: ModelInfluencerConditionInput): Influencer @aws_api_key @aws_iam
+  createCreatorDetails(input: CreateCreatorDetailsInput!, condition: ModelCreatorDetailsConditionInput): CreatorDetails @aws_api_key @aws_iam
+  updateCreatorDetails(input: UpdateCreatorDetailsInput!, condition: ModelCreatorDetailsConditionInput): CreatorDetails @aws_api_key @aws_iam
+  deleteCreatorDetails(input: DeleteCreatorDetailsInput!, condition: ModelCreatorDetailsConditionInput): CreatorDetails @aws_api_key @aws_iam
+  createCreator(input: CreateCreatorInput!, condition: ModelCreatorConditionInput): Creator @aws_api_key @aws_iam
+  updateCreator(input: UpdateCreatorInput!, condition: ModelCreatorConditionInput): Creator @aws_api_key @aws_iam
+  deleteCreator(input: DeleteCreatorInput!, condition: ModelCreatorConditionInput): Creator @aws_api_key @aws_iam
 }
 
-input ModelInfluencerConditionInput {
-  Name: ModelStringInput
-  email_id: ModelStringInput
+input ModelCreatorDetailsConditionInput {
+  creator_id: ModelIDInput
   username: ModelStringInput
-  description: ModelStringInput
-  and: [ModelInfluencerConditionInput]
-  or: [ModelInfluencerConditionInput]
-  not: ModelInfluencerConditionInput
+  email_id: ModelStringInput
+  first_name: ModelStringInput
+  last_name: ModelStringInput
+  last_updated_at: ModelStringInput
+  and: [ModelCreatorDetailsConditionInput]
+  or: [ModelCreatorDetailsConditionInput]
+  not: ModelCreatorDetailsConditionInput
 }
 
 type Subscription {
-  onCreateInfluencer: Influencer @aws_subscribe(mutations: ["createInfluencer"]) @aws_api_key @aws_iam
-  onUpdateInfluencer: Influencer @aws_subscribe(mutations: ["updateInfluencer"]) @aws_api_key @aws_iam
-  onDeleteInfluencer: Influencer @aws_subscribe(mutations: ["deleteInfluencer"]) @aws_api_key @aws_iam
+  onCreateCreatorDetails: CreatorDetails @aws_subscribe(mutations: ["createCreatorDetails"]) @aws_api_key @aws_iam
+  onUpdateCreatorDetails: CreatorDetails @aws_subscribe(mutations: ["updateCreatorDetails"]) @aws_api_key @aws_iam
+  onDeleteCreatorDetails: CreatorDetails @aws_subscribe(mutations: ["deleteCreatorDetails"]) @aws_api_key @aws_iam
+  onCreateCreator: Creator @aws_subscribe(mutations: ["createCreator"]) @aws_api_key @aws_iam
+  onUpdateCreator: Creator @aws_subscribe(mutations: ["updateCreator"]) @aws_api_key @aws_iam
+  onDeleteCreator: Creator @aws_subscribe(mutations: ["deleteCreator"]) @aws_api_key @aws_iam
+}
+
+type ModelCreatorConnection @aws_api_key @aws_iam {
+  items: [Creator]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelCreatorFilterInput {
+  id: ModelIDInput
+  username: ModelStringInput
+  email_id: ModelStringInput
+  and: [ModelCreatorFilterInput]
+  or: [ModelCreatorFilterInput]
+  not: ModelCreatorFilterInput
+}
+
+input CreateCreatorInput {
+  id: ID
+  username: String!
+  email_id: AWSEmail!
+  _version: Int
+}
+
+input UpdateCreatorInput {
+  id: ID!
+  username: String
+  email_id: AWSEmail
+  _version: Int
+}
+
+input DeleteCreatorInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelCreatorConditionInput {
+  username: ModelStringInput
+  email_id: ModelStringInput
+  and: [ModelCreatorConditionInput]
+  or: [ModelCreatorConditionInput]
+  not: ModelCreatorConditionInput
 }

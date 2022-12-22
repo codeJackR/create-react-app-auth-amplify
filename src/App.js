@@ -1,6 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
-import {NavBar, BrowseInfluencers} from "./ui-components";
+import {NavBar, BrowseCreators} from "./ui-components";
 import './App.css';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <NavBar overrides={navbarOverrides} width="100%" />
       <header className="App-header">
         <h1>InfluNet</h1>
-        <BrowseInfluencers />
+        <BrowseCreators />
       </header>
     </div>
   );

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "cognitocf0c6096_identitypool_cf0c6096",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "cognit107e5b89",
-    "userPoolName": "cognitocf0c6096_userpool_cf0c6096",
+    "resourceNameTruncated": "exonet274d0b88",
+    "userPoolName": "exonetz",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -27,35 +27,25 @@
       "email"
     ],
     "aliasAttributes": [],
-    "userpoolClientGenerateSecret": true,
+    "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "cognitocf0c6096_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "exonet274d0b88_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
+    "sharedId": "274d0b88",
+    "resourceName": "exonetz",
     "authSelections": "identityPoolAndUserPool",
-    "resourceName": "cognitocf0c6096",
-    "useDefault": "manual",
-    "thirdPartyAuth": false,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": false,
-    "dependsOn": [],
     "serviceName": "Cognito",
+    "usernameAttributes": [
+      "email"
+    ],
+    "useDefault": "manual",
     "userPoolGroups": false,
     "userPoolGroupList": [],
     "adminQueries": false,
+    "thirdPartyAuth": false,
     "authProviders": [],
-    "hostedUI": false
+    "useEnabledMfas": false
   }
 } 
