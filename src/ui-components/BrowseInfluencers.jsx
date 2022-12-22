@@ -5,8 +5,8 @@
  **************************************************************************/
 
 /* eslint-disable */
-import React from "react";
-import { Influencer } from "../models";
+import * as React from "react";
+import { Creator } from "../models";
 import {
   getOverrideProps,
   useDataStoreBinding,
@@ -17,14 +17,16 @@ export default function BrowseInfluencers(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
-    model: Influencer,
+    model: Creator,
   }).items;
   const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection
       type="grid"
-      isSearchable={true}
-      searchPlaceholder="Search..."
+      isSearchable="true"
+      isPaginated={true}
+      searchPlaceholder="Search Creators..."
+      itemsPerPage={30}
       templateColumns="1fr 1fr 1fr"
       autoFlow="row"
       alignItems="stretch"
@@ -39,6 +41,7 @@ export default function BrowseInfluencers(props) {
           height="auto"
           width="auto"
           margin="1rem 1rem 1rem 1rem"
+          creator={item}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ProfileCard>

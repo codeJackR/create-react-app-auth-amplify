@@ -4,12 +4,12 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import React from "react";
-import { Influencer } from "../models";
+import * as React from "react";
+import { Creator } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type ProfileCardProps = React.PropsWithChildren<Partial<FlexProps> & {
-    influencer?: Influencer;
+    creator?: Creator;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

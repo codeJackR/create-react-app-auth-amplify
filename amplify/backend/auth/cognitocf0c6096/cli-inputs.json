@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "testAuthIdentityPool",
+    "identityPoolName": "cognitocf0c6096_identitypool_cf0c6096",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "exonetec1d2534",
-    "userPoolName": "exonetz",
+    "resourceNameTruncated": "cognit107e5b89",
+    "userPoolName": "cognitocf0c6096_userpool_cf0c6096",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,43 +14,48 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Verification code: {####}",
-    "emailVerificationMessage": "Verification code: {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [
       "Requires Lowercase",
       "Requires Numbers",
-      "Requires Symbols",
       "Requires Uppercase"
     ],
     "requiredAttributes": [
-      "email",
-      "preferred_username",
-      "name",
-      "gender",
-      "birthdate"
+      "email"
     ],
     "aliasAttributes": [],
-    "userpoolClientGenerateSecret": false,
+    "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "exonetec1d2534_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "cognitocf0c6096_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "ec1d2534",
-    "resourceName": "exonetz",
     "authSelections": "identityPoolAndUserPool",
-    "serviceName": "Cognito",
-    "usernameAttributes": [
-      "email"
-    ],
+    "resourceName": "cognitocf0c6096",
     "useDefault": "manual",
+    "thirdPartyAuth": false,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": false,
+    "dependsOn": [],
+    "serviceName": "Cognito",
     "userPoolGroups": false,
     "userPoolGroupList": [],
     "adminQueries": false,
-    "thirdPartyAuth": false,
     "authProviders": [],
-    "useEnabledMfas": false
+    "hostedUI": false
   }
-}
+} 
